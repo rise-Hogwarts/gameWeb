@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/numbers.css">
+</head>
+<body>
+	
+	<div>
+		<p class="ansNum" th:text="${number}"></p>
+	</div>
+	
+	<table class="tbl">
+	<form method="post" th:action="@{/answer}" >
+		<div style="display: inline;" th:each="number,index : ${numbers}">
+			
+			<td class="td">
+				<button class="btn">
+					<th:block th:if="${number < 10}">
+						&nbsp;
+					</th:block>
+					<p class="number" style="display: inline;" th:text="${number}"></p>
+					<th:block th:if="${number < 10}">
+						&nbsp;
+					</th:block>
+				</button>
+			</td>
+			
+			<th:block th:if="${index.count % 10 == 0}">
+				<tr></tr>
+			</th:block>
+		</div>
+	</form>
+	</table>
+	
+</body>
+</html>

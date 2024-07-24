@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>計算クイズ　設定画面</title>
+</head>
+<body>
+	<div>
+		<h3>計算ゲーム　設定画面</h3>
+	</div>
+	
+	<form method="post" th:action="@{/calcStart}">
+		足し算<input type="radio" name="set" value="plus"/ checked>
+		引き算<input type="radio" name="set" value="minus"/>
+		掛け算<input type="radio" name="set" value="kake"/>
+		割り算<input type="radio" name="set" value="wari"/>
+		<input type="submit" value="スタート">
+	</form>
+	
+	<div>
+		<button><a th:href="@{/}">戻る</a></button>
+	</div>
+</body>
+</html>

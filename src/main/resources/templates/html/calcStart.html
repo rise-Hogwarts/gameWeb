@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<h3><span th:text="${num1}"></span>
+			<span th:text="${enzansi}"></span>
+			<span th:text="${num2}"></span>
+		</h3>
+	</div>
+	
+	<div>
+		<form method="post" th:action="@{/calc/answer}">
+			<input type="hidden" name="answer" th:value="${answer}">
+			<input type="text" name="response">
+			<input type="submit" value="回答">
+		</form>
+	</div>
+</body>
+</html>

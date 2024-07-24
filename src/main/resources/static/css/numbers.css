@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.tbl{
+    background-color: lemonchiffon;
+    margin: 40px auto;
+}
+
+.td{
+	text-align: center;
+}
+
+.btn{
+	padding: auto;
+}
+
+
+.number{
+	font-size: 30px;
+}
+
+.ansNum{
+	text-align: center;
+	font-size: 40px;
+}
+
