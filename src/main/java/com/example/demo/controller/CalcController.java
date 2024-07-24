@@ -4,14 +4,13 @@ import java.util.Random;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class CalcController {
 	
-	@GetMapping("/calc/setting")
+	@PostMapping("/calc/setting")
 	public String calcsetting(Model model) {
 		return "html/calcSetting";
 	}

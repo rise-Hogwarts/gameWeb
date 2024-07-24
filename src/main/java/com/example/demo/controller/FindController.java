@@ -5,22 +5,37 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+
+@EnableScheduling
 @Controller
-public class TestController {
+public class FindController {
+	@Autowired
+	HttpSession session;
+	
+	@Autowired
+	HttpServletRequest request;
 	
 	@GetMapping("/")
 	public String test() {
 		return "html/root";
 	}
 	
-	@GetMapping("/numbers")
+	@RequestMapping(value = "/numbers", method = {RequestMethod.GET, RequestMethod.POST})
 	public String numbers(Model model) {
+		session = request.getSession();
+	    session.setMaxInactiveInterval(1); 
 		
 		Random rand = new Random();
 		int number = rand.nextInt(100);
@@ -34,16 +49,24 @@ public class TestController {
 		// 格納された数字をシャッフル
 		Collections.shuffle(numbers);
 		
-		model.addAttribute("number", number);
+		model.addAttribute("themeNumber", number);
 		model.addAttribute("numbers", numbers);
 		
 		return "html/numbers";
 	}
 	
-	@PostMapping("/answer")
-	public String answer(@RequestParam("id") String id) {
-		System.out.println(id);
-		return null;
+	@GetMapping("/answer")
+	public String answer(@RequestParam("clickNo") String clickNo, @RequestParam("themeNumber") String themeNo) {
+		System.out.println(clickNo);
+		if(clickNo.equals(themeNo)) {
+			
+		}
+		session = request.getSession(false);
+		if(session == null) {
+			return "html/root";
+		}
+		
+		return "redirect:/numbers";
 	}
 	
 //	@GetMapping("/calc/setting")

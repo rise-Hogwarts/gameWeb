@@ -5,7 +5,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a th:href="@{/numbers}">数字探しゲーム</a>
-	<a th:href="@{/calc/setting}">計算クイズ</a>
+	<form method="get" th:action="@{/numbers}">
+		<input type="submit" value="数字探しゲーム"></input>
+	</form>
+	<form method="post" th:action="@{/calc/setting}">
+		<input type="submit" value="計算クイズ"></input>
+	</form>
 </body>
 </html>

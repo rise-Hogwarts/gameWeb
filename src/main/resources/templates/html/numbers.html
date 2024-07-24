@@ -8,15 +8,16 @@
 <body>
 	
 	<div>
-		<p class="ansNum" th:text="${number}"></p>
+		<p class="ansNum" th:text="${themeNumber}"></p>
 	</div>
 	
 	<table class="tbl">
-	<form method="post" th:action="@{/answer}" >
+	<form method="get" th:action="@{/answer}" >
 		<div style="display: inline;" th:each="number,index : ${numbers}">
 			
 			<td class="td">
-				<button class="btn">
+				<button class="btn" name="clickNo" th:value="${number}">
+					<input type="hidden" name="themeNumber" th:value="${themeNumber}">
 					<th:block th:if="${number < 10}">
 						&nbsp;
 					</th:block>
